@@ -1,0 +1,25 @@
+*{
+    cursor: crosshair;
+    user-select: none;
+}
+#scoreCounter, #magazine{
+    text-align: center;
+    font-size: xx-large;
+    text-transform: uppercase;
+}
+body{
+    background-image: url(winterwonderland.avif);
+    background-size: cover;
+    overflow: hidden;
+}
+#emu{
+    max-width: 350px;
+    max-height: 350px;
+    user-select: none;
+    position: absolute;
+  top: 50px; /* Initial position from the top */
+  left: -500px; /* Initial position outside the left edge */
+  width: 150px;
+  height: 150px;
+  transition: left 0.75s; 
+}
