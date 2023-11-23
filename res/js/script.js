@@ -32,17 +32,17 @@ start.onclick = () => {
   emu.onclick = () => {
     if (numberOfBullets > 0) {
       score += 50;
+      //returnToSender(0);
     } else {
       score += 0;
     }
     scoreCounter.innerText = "Score: " + score;
-    
   };
   // strileni
   function bulletMinus() {
     if (numberOfBullets >= 1) {
       numberOfBullets -= 1;
-      magazine.innerText = numberOfBullets;
+      magazine.innerText = numberOfBullets + "/7";
       console.log("shot fired");
     }
   }
@@ -52,7 +52,7 @@ start.onclick = () => {
       magazineReload.play();
       setTimeout(() => {
         numberOfBullets = 7;
-        magazine.innerText = numberOfBullets;
+        magazine.innerText = numberOfBullets + "/7";
       }, 1500);
     }
   }
@@ -66,4 +66,7 @@ function getRandomNumber(minimum, maximum) {
 // pohyb emu
 function upDown(y) {
   emu.style.top = `${y}px`;
+}
+function returnToSender(x) {
+  emu.style.left = `${x}px`;
 }

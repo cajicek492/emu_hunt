@@ -1,35 +1,42 @@
-*{
-    cursor: crosshair;
-    user-select: none;
+* {
+  cursor: crosshair;
+  user-select: none;
+  box-sizing: border-box;
 }
-#scoreCounter, #magazine{
-    text-align: center;
-    font-size: xx-large;
-    text-transform: uppercase;
+#scoreCounter {
+  text-align: center;
+  font-size: xx-large;
+  text-transform: uppercase;
 }
-body{
-    background-image: url(../img/winterwonderland.avif);
-    background-size: cover;
-    overflow: hidden;
+#magazine {
+  position: absolute;
+  font-size: 40px;
+  top: 86%;
+  right: 0.7%;
 }
-#emu{
-    max-width: 350px;
-    max-height: 350px;
-    user-select: none;
-    position: absolute;
-    display: none;
+body {
+  background-image: url(../img/winterwonderland.avif);
+  background-size: cover;
+  overflow: hidden;
+}
+#emu {
+  max-width: 350px;
+  max-height: 350px;
+  user-select: none;
+  position: absolute;
+  display: none;
   width: 150px;
   height: 150px;
-  transition: top 1.5s; 
+  transition: top 1.5s;
   animation: 3s animace infinite linear;
 }
 
 @keyframes animace {
-    from {
-        left: 0;
-    }
+  from {
+    left: 0;
+  }
 
-    to {
-        left: 100%;
-    }
+  to {
+    left: 100%;
+  }
 }
