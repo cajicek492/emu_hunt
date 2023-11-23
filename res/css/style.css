@@ -20,7 +20,7 @@ body{
     display: none;
   width: 150px;
   height: 150px;
-  transition: top 0.75s; 
+  transition: top 1.5s; 
   animation: 3s animace infinite linear;
 }
 

@@ -8,24 +8,19 @@ const start = document.getElementById("start");
 let numberOfBullets = 7;
 let score = 0;
 
-function upDown(y) {
-  emu.style.top = `${y}px`;
-}
-
-function getRandomNumber(minimum, maximum) {
-  return Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
-}
-
 start.onclick = () => {
   start.style.display = "none";
+
   setInterval(() => {
     upDown(getRandomNumber(0, window.innerHeight));
   }, 400);
+
   setTimeout(() => {
     emu.style.display = "block";
     startAudio.play();
   }, 1000);
 
+  // eventlistener
   document.addEventListener("click", bulletMinus);
 
   document.addEventListener("keydown", function (event) {
@@ -33,7 +28,7 @@ start.onclick = () => {
       reload();
     }
   });
-
+  // score
   emu.onclick = () => {
     if (numberOfBullets > 0) {
       score += 50;
@@ -41,8 +36,9 @@ start.onclick = () => {
       score += 0;
     }
     scoreCounter.innerText = "Score: " + score;
+    
   };
-
+  // strileni
   function bulletMinus() {
     if (numberOfBullets >= 1) {
       numberOfBullets -= 1;
@@ -61,3 +57,13 @@ start.onclick = () => {
     }
   }
 };
+
+//generace cisel
+function getRandomNumber(minimum, maximum) {
+  return Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
+}
+
+// pohyb emu
+function upDown(y) {
+  emu.style.top = `${y}px`;
+}
