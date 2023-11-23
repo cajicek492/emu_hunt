@@ -5,57 +5,59 @@ const startAudio = new Audio("./res/audio/mariolesgo.mp3");
 const emu = document.getElementById("emu");
 const start = document.getElementById("start");
 
-
 let numberOfBullets = 7;
 let score = 0;
+
+function upDown(y) {
+  emu.style.top = `${y}px`;
+}
+
+function getRandomNumber(minimum, maximum) {
+  return Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
+}
+
 start.onclick = () => {
-
-
-  start.style.display="none";
+  start.style.display = "none";
+  setInterval(() => {
+    upDown(getRandomNumber(0, window.innerHeight));
+  }, 400);
   setTimeout(() => {
+    emu.style.display = "block";
     startAudio.play();
-    emu.style.left = "150px";
-  },1000);
+  }, 1000);
 
+  document.addEventListener("click", bulletMinus);
 
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "r" || event.key === "R") {
+      reload();
+    }
+  });
 
+  emu.onclick = () => {
+    if (numberOfBullets > 0) {
+      score += 50;
+    } else {
+      score += 0;
+    }
+    scoreCounter.innerText = "Score: " + score;
+  };
 
-
-document.addEventListener("click", bulletMinus);
-
-document.addEventListener("keydown", function (event) {
-  if (event.key === "r" || event.key === "R") {
-    reload();
+  function bulletMinus() {
+    if (numberOfBullets >= 1) {
+      numberOfBullets -= 1;
+      magazine.innerText = numberOfBullets;
+      console.log("shot fired");
+    }
   }
-});
-
-emu.onclick = () => {
-  if(numberOfBullets > 0){
-    score+=50;
-  } else {
-    score+=0;
+  function reload() {
+    if (numberOfBullets == 7) {
+    } else {
+      magazineReload.play();
+      setTimeout(() => {
+        numberOfBullets = 7;
+        magazine.innerText = numberOfBullets;
+      }, 1500);
+    }
   }
-  scoreCounter.innerText = "Score: " + score;
-}
-
-function bulletMinus() {
-  if (numberOfBullets >= 1) {
-    numberOfBullets-=1;
-    magazine.innerText = numberOfBullets;
-    console.log("shot fired");
-  }
-}
-function reload() {
-  if(numberOfBullets == 7){
-
-  } else {
-    magazineReload.play();
-    setTimeout(()=>{
-        numberOfBullets = 7
-    magazine.innerText = numberOfBullets;
-    },1500)
-  }
-}
-
-
-}
+};

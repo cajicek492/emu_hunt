@@ -8,7 +8,7 @@
     text-transform: uppercase;
 }
 body{
-    background-image: url(winterwonderland.avif);
+    background-image: url(../img/winterwonderland.avif);
     background-size: cover;
     overflow: hidden;
 }
@@ -17,9 +17,19 @@ body{
     max-height: 350px;
     user-select: none;
     position: absolute;
-  top: 50px; /* Initial position from the top */
-  left: -500px; /* Initial position outside the left edge */
+    display: none;
   width: 150px;
   height: 150px;
-  transition: left 0.75s; 
+  transition: top 0.75s; 
+  animation: 3s animace infinite linear;
+}
+
+@keyframes animace {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: 100%;
+    }
 }
